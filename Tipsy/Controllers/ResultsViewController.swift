@@ -9,15 +9,26 @@
 import UIKit
 
 class ResultsViewController: UIViewController {
+	var totalResult: Double?
+	var splitNumber: String?
+	var tipTitle: String?
 
-    override func viewDidLoad() {
+	@IBOutlet weak var totalLabel: UILabel!
+	@IBOutlet weak var settingsLabel: UILabel!
+	
+	override func viewDidLoad() {
         super.viewDidLoad()
-
+				totalLabel.text = "\(totalResult ?? 0.0)"
+				settingsLabel.text = "Split: \(splitNumber ?? "N/A") | \(tipTitle ?? "N/A")"
         // Do any additional setup after loading the view.
     }
     
 
-    /*
+	@IBAction func recalculatePressed(_ sender: UIButton) {
+		NotificationCenter.default.post(name: NSNotification.Name("ClearBillTextField"), object: nil)
+		dismiss(animated: true, completion: nil)
+	}
+	/*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
